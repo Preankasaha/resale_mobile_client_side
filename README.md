@@ -1,3 +1,12 @@
+##### Technologies:
+
+React
+React Router Dom
+Talwind CSS Library
+DaisyUI
+firebase
+React Form Hook
+React Hot Toast
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,4 +1,5 @@
 import React from 'react';
+import Banner from '../Banner/Banner';
 
 
 
@@ -8,6 +9,8 @@ const Home = () => {
 
         <div>
 
+            <Banner></Banner>
+           
 
         </div>
     );
