@@ -3,9 +3,6 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 
-
-
-
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
 
@@ -24,7 +21,7 @@ const DashboardLayout = () => {
                         {
                             <>
 
-                                <li><Link to="/dashboard/addproduct">Add A Product</Link></li>
+                                <li><Link to="/dashboard/addproduct" className='text-xl text-white font-bold uppercase'>Add Product</Link></li>
 
                             </>
                         }
