@@ -3,9 +3,10 @@ import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../Layout/Main';
 import { categoryeDataLoader } from '../../Loader/CategoryDataLoader';
 import Blog from '../../pages/Blog/Blog';
+import AddProduct from '../../pages/DashBoard/AddProduct/AddProduct';
 
 
-import DashBoard from '../../pages/DashBoard/DashBoard';
+import DashBoard from '../../pages/DashBoard/DashBoard/DashBoard';
 import Categories from '../../pages/Home/Categories/Categories/Categories';
 
 
@@ -54,7 +55,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <PrivateRouter><DashBoard></DashBoard></PrivateRouter>
+                element: <PrivateRouter><DashBoard></DashBoard></PrivateRouter>,
+                children: [
+                    {
+                        path: '/dashboard',
+                        element: <AddProduct></AddProduct>
+                    },
+                ]
             }
 
         ]
