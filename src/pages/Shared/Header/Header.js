@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
@@ -13,7 +13,7 @@ const Header = () => {
     }
     const menuItems = <React.Fragment>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/category'>Category</Link></li>
+        <li><Link to='/products-category'>Category</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/dashboard'>DashBoard</Link></li>
 

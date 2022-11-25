@@ -1,18 +1,64 @@
 [
     {
-        "_id": 1,
-        "brand": "Samsung"
-        
+        "categoryName": "Samsung",
+        "categoryId": "637f3583e83b7c6616cdff99",
+        "name": "Samsung-A25",
+        "location": "Dhaka",
+        "resalePrice": 250,
+        "originalPrice": 500,
+        "yearsOfUse": "1.5 years",
+        "sellerName": "Rakib"
     },
     {
-        "_id": 2,
-        "brand": "Oppo"
-        
+        "categoryName": "OPPO",
+        "categoryId": "637f3583e83b7c6616cdff9a",
+        "name": "Oppo-c25",
+        "location": "Dhaka",
+        "resalePrice": 205,
+        "originalPrice": 450,
+        "yearsOfUse": "2 years",
+        "sellerName": "Sakib"
     },
     {
-        "_id": 3,
-        "brand": "iPhone"
-        
-    }
+        "categoryName": "iPhone",
+        "categoryId": "637f3583e83b7c6616cdff9b",
+        "name": "iPhone-XII",
+        "location": "Chittagong",
+        "resalePrice": 255,
+        "originalPrice": 555,
+        "yearsOfUse": "2.5 years",
+        "sellerName": "Tahsin"
+    },
+    
+        {
+            "categoryName": "Samsung",
+            "categoryId": "637f3583e83b7c6616cdff99",
+            "name": "Samsung-A35",
+            "location": "Chittagong",
+            "resalePrice": 255,
+            "originalPrice": 550,
+            "yearsOfUse": "2.5 years",
+            "sellerName": "Raisa"
+        },
+        {
+            "categoryName": "OPPO",
+            "categoryId": "637f3583e83b7c6616cdff9a",
+            "name": "Oppo-c35",
+            "location": "Dhaka",
+            "resalePrice": 155,
+            "originalPrice": 450,
+            "yearsOfUse": "3 years",
+            "sellerName": "Sam"
+        },
+        {
+            "categoryName": "iPhone",
+            "categoryId": "637f3583e83b7c6616cdff9b",
+            "name": "iPhone-X",
+            "location": "Chittagong",
+            "resalePrice": 235,
+            "originalPrice": 545,
+            "yearsOfUse": "3 years",
+            "sellerName": "Tania"
+        }
     
 ]

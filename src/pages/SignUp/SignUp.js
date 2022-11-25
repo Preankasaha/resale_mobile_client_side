@@ -62,6 +62,13 @@ const SignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-warning'>{errors.password.message}</p>}
                     </div>
+                    <select type="select" {...register("select", {
+                        required: 'selection is required'
+                    })} className="select select-bordered w-full max-w-xs">
+                        <option disabled selected>You are a</option>
+                        <option selected>Buyer</option>
+                        <option>Seller</option>
+                    </select>
                     {signUpError && <p className='text-red-500'>{signUpError}</p>}
                     <input className='btn btn-accent w-full' value="Sign Up" type="submit" />
 
