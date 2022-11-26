@@ -8,6 +8,7 @@ import AddProduct from '../../pages/DashBoard/AddProduct/AddProduct';
 
 
 import DashBoard from '../../pages/DashBoard/DashBoard/DashBoard';
+import MyOrders from '../../pages/DashBoard/MyOrders/MyOrders';
 import Categories from '../../pages/Home/Categories/Categories/Categories';
 
 
@@ -63,6 +64,11 @@ const router = createBrowserRouter([
                         path: '/dashboard/addproduct',
                         element: <AddProduct></AddProduct>
                     },
+                    {
+                        path: '/dashboard/myorders',
+                        element: <MyOrders></MyOrders>
+
+                    }
                 ]
             }
 

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
@@ -11,8 +10,6 @@ const BookNowModal = ({ product, setBooking }) => {
     const handleBooking = event => {
         event.preventDefault();
         const form = event.target;
-
-
         const email = form.email.value;
         const productName = form.productName.value;
         const resalePrice = form.resalePrice.value;
