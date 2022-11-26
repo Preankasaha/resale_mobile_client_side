@@ -12,7 +12,8 @@ import Categories from '../../pages/Home/Categories/Categories/Categories';
 
 
 import Home from '../../pages/Home/Home/Home';
-import Products from '../../pages/Home/Products/Products/Products';
+import Products from '../../pages/ProductsByCategory/Products/Products/Products';
+
 import DisplayError from '../../pages/Shared/DisplayError/DisplayError';
 import SignIn from '../../pages/SignIn/SignIn';
 import SignUp from '../../pages/SignUp/SignUp';
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
-                element: <Products></Products>
+                element: <PrivateRouter><Products></Products></PrivateRouter>
             },
             {
                 path: '/blog',

@@ -3,13 +3,9 @@ import React, { useEffect, useState } from 'react';
 
 import CategoryCard from '../CategoryCard/CategoryCard';
 
-
-
 const Categories = () => {
 
     const [categories, setCategories] = useState([]);
-
-
 
     useEffect(() => {
 
@@ -20,7 +16,7 @@ const Categories = () => {
     }, [])
 
 
-    console.log(categories);
+    // console.log(categories);
     return (
 
         <div className='bg-gradient-to-r from-sky-900 to-cyan-500 p-14'>

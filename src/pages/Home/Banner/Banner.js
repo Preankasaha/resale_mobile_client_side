@@ -7,7 +7,7 @@ const Banner = () => {
             <div className="hero-content text-center text-white">
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">SELL YOUR SMARTPHONE HERE</h1>
-                    <p className="text-xl mb-5">Make quick cash at your door step</p>
+                    <p className="text-2xl text-white font-bold  text-center my-4">Make quick cash at your door step</p>
                     <button className="btn btn-primary">Get Started</button>
                 </div>
             </div>
