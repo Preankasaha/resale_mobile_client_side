@@ -1,7 +1,7 @@
 [
     {
         "categoryName": "Samsung",
-        "categoryId": "637f3583e83b7c6616cdff99",
+        "categoryId": "Samsung",
         "name": "Samsung-A25",
         "location": "Dhaka",
         "resalePrice": 250,
@@ -11,7 +11,7 @@
     },
     {
         "categoryName": "OPPO",
-        "categoryId": "637f3583e83b7c6616cdff9a",
+        "categoryId": "OPPO",
         "name": "Oppo-c25",
         "location": "Dhaka",
         "resalePrice": 205,
@@ -21,7 +21,7 @@
     },
     {
         "categoryName": "iPhone",
-        "categoryId": "637f3583e83b7c6616cdff9b",
+        "categoryId": "iPhone",
         "name": "iPhone-XII",
         "location": "Chittagong",
         "resalePrice": 255,
@@ -29,36 +29,34 @@
         "yearsOfUse": "2.5 years",
         "sellerName": "Tahsin"
     },
-    
-        {
-            "categoryName": "Samsung",
-            "categoryId": "637f3583e83b7c6616cdff99",
-            "name": "Samsung-A35",
-            "location": "Chittagong",
-            "resalePrice": 255,
-            "originalPrice": 550,
-            "yearsOfUse": "2.5 years",
-            "sellerName": "Raisa"
-        },
-        {
-            "categoryName": "OPPO",
-            "categoryId": "637f3583e83b7c6616cdff9a",
-            "name": "Oppo-c35",
-            "location": "Dhaka",
-            "resalePrice": 155,
-            "originalPrice": 450,
-            "yearsOfUse": "3 years",
-            "sellerName": "Sam"
-        },
-        {
-            "categoryName": "iPhone",
-            "categoryId": "637f3583e83b7c6616cdff9b",
-            "name": "iPhone-X",
-            "location": "Chittagong",
-            "resalePrice": 235,
-            "originalPrice": 545,
-            "yearsOfUse": "3 years",
-            "sellerName": "Tania"
-        }
-    
+    {
+        "categoryName": "Samsung",
+        "categoryId": "Samsung",
+        "name": "Samsung-A35",
+        "location": "Chittagong",
+        "resalePrice": 255,
+        "originalPrice": 550,
+        "yearsOfUse": "2.5 years",
+        "sellerName": "Raisa"
+    },
+    {
+        "categoryName": "OPPO",
+        "categoryId": "OPPO",
+        "name": "Oppo-c35",
+        "location": "Dhaka",
+        "resalePrice": 155,
+        "originalPrice": 450,
+        "yearsOfUse": "3 years",
+        "sellerName": "Sam"
+    },
+    {
+        "categoryName": "iPhone",
+        "categoryId": "iPhone",
+        "name": "iPhone-X",
+        "location": "Chittagong",
+        "resalePrice": 235,
+        "originalPrice": 545,
+        "yearsOfUse": "3 years",
+        "sellerName": "Tania"
+    }
 ]

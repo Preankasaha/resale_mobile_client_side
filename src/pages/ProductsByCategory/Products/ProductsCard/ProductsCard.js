@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const ProductsCard = ({ product }) => {
+const ProductsCard = ({ product, setProductBooking }) => {
     console.log(product);
     const { img, productName, categoryName, originalPrice, resalePrice, yearsOfUse, sellerName, location } = product;
 
@@ -21,7 +21,7 @@ const ProductsCard = ({ product }) => {
                         <p className="text-2xl my-2">Location: {location}</p>
 
                         <div className="card-actions justify-center">
-                            <label
+                            <label onClick={() => setProductBooking(product)}
                                 htmlFor="booking-modal"
                                 className="btn btn-primary text-white"
 

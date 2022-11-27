@@ -3,10 +3,11 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 
-const BookNowModal = ({ product, setBooking }) => {
-    // const BookNowModal = ({ productBooking, setProductBooking }) => {
-    console.log(product);
-    const { productName, categoryName, originalPrice, resalePrice, yearsOfUse, sellerName, location } = product;
+const BookNowModal = ({ productBooking, setProductBooking }) => {
+
+    console.log(productBooking);
+
+    const { productName, categoryName, originalPrice, resalePrice, yearsOfUse, sellerName, location } = productBooking;
     const { user } = useContext(AuthContext);
 
 
@@ -40,7 +41,7 @@ const BookNowModal = ({ product, setBooking }) => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    setBooking(false);
+                    setProductBooking(null);
                     toast.success('Your Booking is confirmed');
                 }
             })
@@ -60,13 +61,12 @@ const BookNowModal = ({ product, setBooking }) => {
                             <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
 
                                 <label>Name</label>
-
                                 <input name="buyerName" type="text" defaultValue={user?.displayName} disabled className="input w-full input-bordered" />
                                 <input name="email" type="email" defaultValue={user?.email} disabled className="input w-full input-bordered" />
                                 <input name="productName" type="text" defaultValue={productName} disabled className="input w-full input-bordered" />
                                 <input name="resalePrice" type="text" defaultValue={resalePrice} disabled className="input w-full input-bordered" />
                                 <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
-                                <input name="location" type="text" placeholder="Your Location" className="input w-full input-bordered" />
+                                <input name="location" type="text" defaultValue={location} className="input w-full input-bordered" />
                                 <br />
                                 <input className='btn btn-accent w-full' type="submit" value="Submit" />
                             </form>

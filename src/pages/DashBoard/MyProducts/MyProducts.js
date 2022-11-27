@@ -33,7 +33,7 @@ const MyProducts = () => {
                                 <th>{i + 1}</th>
                                 <td><img className='w-1/5 rounded' src={myproduct.img} alt="" /></td>
                                 <td>{myproduct.productName}</td>
-                                <td>{myproduct.resaleprice}</td>
+                                <td>{myproduct.resalePrice}</td>
                                 <td>
 
 

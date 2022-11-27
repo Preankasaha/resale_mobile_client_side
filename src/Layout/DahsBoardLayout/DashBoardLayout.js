@@ -8,7 +8,7 @@ const DashboardLayout = () => {
 
     return (
         <div>
-            
+
             <div className="drawer drawer-mobile">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
@@ -21,10 +21,10 @@ const DashboardLayout = () => {
                         {
                             <>
                                 <li><Link to="/dashboard/allbuyers">All Buyers</Link></li>
-                                <li><Link to="/dashboard/allSellers">All Sellers</Link></li>
+                                <li><Link to="/dashboard/allsellers">All Sellers</Link></li>
                                 <li><Link to="/dashboard/addproduct" className='text-xl text-white font-bold uppercase'>Add Product</Link></li>
                                 <li><Link to="/dashboard/myorders" className='text-xl text-white font-bold uppercase'>My Orders</Link></li>
-                                <li><Link to="/dashboard/myporduct" className='text-xl text-white font-bold uppercase'>My Products</Link></li>
+                                <li><Link to="/dashboard/myproduct" className='text-xl text-white font-bold uppercase'>My Products</Link></li>
                             </>
                         }
 

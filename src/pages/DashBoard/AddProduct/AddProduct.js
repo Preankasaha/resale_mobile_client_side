@@ -35,7 +35,7 @@ const AddProduct = () => {
             .then(result => {
                 console.log(result);
                 toast.success(`${data.productName} is added successfully`);
-                navigate('/dashboard/myporduct')
+                navigate('/dashboard/myproduct')
             })
     }
     //loader
@@ -84,7 +84,7 @@ const AddProduct = () => {
                             </option>
                             <option>OPPO
                             </option>
-                            <option>iphone
+                            <option>iPhone
                             </option>
                         </select>
                     </div>

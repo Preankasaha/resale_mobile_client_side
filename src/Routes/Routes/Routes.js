@@ -5,6 +5,8 @@ import Main from '../../Layout/Main';
 import { categoryeDataLoader } from '../../Loader/CategoryDataLoader';
 import Blog from '../../pages/Blog/Blog';
 import AddProduct from '../../pages/DashBoard/AddProduct/AddProduct';
+import AllBuyers from '../../pages/DashBoard/AllBuyers/AllBuyers';
+import AllSellers from '../../pages/DashBoard/AllSellers/AllSellers';
 import DashBoard from '../../pages/DashBoard/DashBoard/DashBoard';
 
 
@@ -64,6 +66,16 @@ const router = createBrowserRouter([
                         element: <DashBoard></DashBoard>
                     },
                     {
+                        path: '/dashboard/allsellers',
+                        element: <AllSellers></AllSellers>
+
+                    },
+                    {
+                        path: '/dashboard/allbuyers',
+                        element: <AllBuyers></AllBuyers>
+
+                    },
+                    {
 
                         path: '/dashboard/addproduct',
                         element: <AddProduct></AddProduct>
@@ -74,7 +86,7 @@ const router = createBrowserRouter([
 
                     },
                     {
-                        path: '/dashboard/myporduct',
+                        path: '/dashboard/myproduct',
                         element: <MyProducts></MyProducts>
 
                     }
