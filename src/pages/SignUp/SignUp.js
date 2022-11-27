@@ -27,11 +27,12 @@ const SignUp = () => {
                 toast.success('user sign up successfully')
                 const userinfo = {
                     displayName: data.name,
-                    // photoURL: data.photoURL
+                    email: data.email,
+                    role: data.role
                 }
                 updateUser(userinfo)
                     .then(() => {
-                        // saveUser(data.name, data.email); //save user called in update user
+                        saveUser(data.name, data.email, data.role); //save user called in update user
                         navigate('/')
                     })
 
@@ -41,34 +42,57 @@ const SignUp = () => {
                 console.log(error.message)
                 setSignUpError(error.message)
             })
-        // const saveUser = (name, email) => {
-        //     const user = { name, email };
-        //     console.log(user);
-        //     fetch('http://localhost:5000/users', {
-        //         method: 'POST',
-        //         headers: {
-        //             'content-type': 'application/json'
-        //         },
-        //         body: JSON.stringify(user)
-        //     })
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             console.log('saveuser:', data);
-        //             navigate('/');
-        //         })
 
-        // sign in with google
-        // const handleGoogleSignIn = () => {
-        //     providerSignIn(googleProvider)
-        //         .then(result => {
-        //             const user = result.user
-        //             //jwt user
-        //             toast.success('You sign in successfully')
-        //             navigate('/');
-        //         }).catch(error => {
-        //             setSignUpError(error.message);
-        //         })
+    }
 
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
+        console.log(user);
+
+        fetch('http://localhost:5000/users', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('saveuser:', data);
+                navigate('/');
+            })
+
+
+    }
+
+
+    // sign in with google
+    const handleGoogleSignIn = () => {
+        providerSignIn(googleProvider)
+            .then(result => {
+                const user = result.user
+                const userInfo = {
+                    disPlayName: user?.displayName,
+                    email: user?.email,
+                    role: 'Buyer'
+                }
+                //jwt user
+                toast.success('You sign in successfully')
+                fetch('http://localhost:5000/users', {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate('/');
+                    })
+            })
+            .catch(error => {
+                setSignUpError(error.message);
+            })
     }
     return (
         <div className='h-[800px] flex justify-center items-center text-white'>
@@ -120,12 +144,12 @@ const SignUp = () => {
 
                 <p>Already have an account? <Link className='text-secondary' to="/signin">Plz Sign In</Link></p>
                 <div className="divider">OR</div>
-                {/* <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button> */}
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+
             </div>
         </div>
     );
 };
-// }
-// }
+
+
 export default SignUp;

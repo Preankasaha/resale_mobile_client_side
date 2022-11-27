@@ -5,22 +5,21 @@ import Main from '../../Layout/Main';
 import { categoryeDataLoader } from '../../Loader/CategoryDataLoader';
 import Blog from '../../pages/Blog/Blog';
 import AddProduct from '../../pages/DashBoard/AddProduct/AddProduct';
-
-
 import DashBoard from '../../pages/DashBoard/DashBoard/DashBoard';
+
+
+
 import MyOrders from '../../pages/DashBoard/MyOrders/MyOrders';
+import MyProducts from '../../pages/DashBoard/MyProducts/MyProducts';
 import Categories from '../../pages/Home/Categories/Categories/Categories';
 
 
 import Home from '../../pages/Home/Home/Home';
 import Products from '../../pages/ProductsByCategory/Products/Products/Products';
-
 import DisplayError from '../../pages/Shared/DisplayError/DisplayError';
 import SignIn from '../../pages/SignIn/SignIn';
 import SignUp from '../../pages/SignUp/SignUp';
 import PrivateRouter from '../PrivateRoute/PrivateRoute';
-
-
 
 
 const router = createBrowserRouter([
@@ -61,6 +60,11 @@ const router = createBrowserRouter([
                 element: <PrivateRouter> <DashboardLayout></DashboardLayout></PrivateRouter>,
                 children: [
                     {
+                        path: '/dashboard',
+                        element: <DashBoard></DashBoard>
+                    },
+                    {
+
                         path: '/dashboard/addproduct',
                         element: <AddProduct></AddProduct>
                     },
@@ -68,7 +72,13 @@ const router = createBrowserRouter([
                         path: '/dashboard/myorders',
                         element: <MyOrders></MyOrders>
 
+                    },
+                    {
+                        path: '/dashboard/myporduct',
+                        element: <MyProducts></MyProducts>
+
                     }
+
                 ]
             }
 

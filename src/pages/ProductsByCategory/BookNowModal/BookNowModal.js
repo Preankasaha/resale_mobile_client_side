@@ -2,7 +2,10 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
+
 const BookNowModal = ({ product, setBooking }) => {
+    // const BookNowModal = ({ productBooking, setProductBooking }) => {
+    console.log(product);
     const { productName, categoryName, originalPrice, resalePrice, yearsOfUse, sellerName, location } = product;
     const { user } = useContext(AuthContext);
 
@@ -17,7 +20,7 @@ const BookNowModal = ({ product, setBooking }) => {
         const buyerName = user?.displayName;
         const location = form.location.value;
         console.log(buyerName, email, productName, resalePrice, phone, location);
-        const booking = {
+        const bookingInfo = {
             buyerName,
             email,
             productName,
@@ -31,7 +34,7 @@ const BookNowModal = ({ product, setBooking }) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(booking)
+            body: JSON.stringify(bookingInfo)
         })
             .then(res => res.json())
             .then(data => {
@@ -60,7 +63,7 @@ const BookNowModal = ({ product, setBooking }) => {
 
                                 <input name="buyerName" type="text" defaultValue={user?.displayName} disabled className="input w-full input-bordered" />
                                 <input name="email" type="email" defaultValue={user?.email} disabled className="input w-full input-bordered" />
-                                <input name="productName" type="text" defaultValue={product?.productName} disabled className="input w-full input-bordered" />
+                                <input name="productName" type="text" defaultValue={productName} disabled className="input w-full input-bordered" />
                                 <input name="resalePrice" type="text" defaultValue={resalePrice} disabled className="input w-full input-bordered" />
                                 <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
                                 <input name="location" type="text" placeholder="Your Location" className="input w-full input-bordered" />

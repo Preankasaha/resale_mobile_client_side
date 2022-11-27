@@ -1,21 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
-const MyOrders = () => {
+const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const { data: bookings = [] } = useQuery({
-        queryKey: ['bookings', user?.email],
+    const { data: myproduct = [] } = useQuery({
+        queryKey: ['myproduct', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/myproduct?email=${user?.email}`)
             const data = await res.json();
             return data;
         }
     })
     return (
         <div>
-            <h3 className="text-5xl text-white text-center my-8 uppercase">My Orders</h3>
+            <h3 className="text-5xl text-white text-center my-8 uppercase">My Product</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full text-white">
                     <thead>
@@ -24,24 +23,23 @@ const MyOrders = () => {
                             <th className='text-xl'>Image</th>
                             <th className='text-xl'>Title</th>
                             <th className='text-xl'>Price</th>
-                            <th className='text-xl'>Payment</th>
+                            <th className='text-xl'>Addvertise Product</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
 
-                            bookings?.map((booking, i) => <tr key={booking._id}>
+                            myproduct?.map((myproduct, i) => <tr key={myproduct._id}>
                                 <th>{i + 1}</th>
-                                <td>{booking.img}</td>
-                                <td>{booking.productName}</td>
-                                <td>{booking.resalePrice}</td>
-
+                                <td><img className='w-1/5 rounded' src={myproduct.img} alt="" /></td>
+                                <td>{myproduct.productName}</td>
+                                <td>{myproduct.resaleprice}</td>
                                 <td>
 
 
                                     <button
                                         className='btn btn-sm'
-                                    >Pay</button>
+                                    >Addvertise</button>
 
 
                                 </td>
@@ -54,4 +52,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default MyProducts;

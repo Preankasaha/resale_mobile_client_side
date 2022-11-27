@@ -40,9 +40,26 @@ const SignIn = () => {
             .then(result => {
                 const user = result.user
                 //jwt user
+                const userInfo = {
+                    disPlayName: user?.displayName,
+                    email: user?.email,
+                    role: 'Buyer'
+                }
                 toast.success('You sign in successfully')
-                navigate(from, { replace: true });
-            }).catch(error => {
+                fetch('http://localhost:5000/users', {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate(from, { replace: true });
+                    })
+
+            })
+            .catch(error => {
                 setLogInError(error.message);
             })
     }
