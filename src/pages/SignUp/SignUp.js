@@ -110,8 +110,8 @@ const SignUp = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        setEmail(email)
-                        navigate('/')
+                        setEmail(user?.email);
+                        // navigate('/');
                     })
             })
             .catch(error => {
@@ -163,12 +163,15 @@ const SignUp = () => {
                     </div>
                     {signUpError && <p className='text-red-500'>{signUpError}</p>}
 
-                    {loading ? <PrimaryButton>
-                        <SpinnerXs></SpinnerXs>
-                    </PrimaryButton>
-                        :
-                        <input className='btn btn-accent w-full my-4' value="Sign Up" type="submit" />
-                    }
+                    <div className='my-4'>
+                        {loading ? <PrimaryButton>
+                            <SpinnerXs></SpinnerXs>
+                        </PrimaryButton>
+                            :
+                            <PrimaryButton>Sign Up</PrimaryButton>
+                            // <input className='btn bg-gradient-to-r from-sky-900 to-cyan-500 w-full my-4 br-0' value="Sign Up" type="submit" />
+                        }
+                    </div>
                 </form>
 
                 <p>Already have an account? <Link className='text-secondary' to="/signin">Plz Sign In</Link></p>

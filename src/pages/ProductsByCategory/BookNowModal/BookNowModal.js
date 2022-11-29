@@ -33,7 +33,8 @@ const BookNowModal = ({ productBooking, setProductBooking }) => {
         fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('resaleMobileToken')}`
             },
             body: JSON.stringify(bookingInfo)
         })
@@ -60,7 +61,7 @@ const BookNowModal = ({ productBooking, setProductBooking }) => {
 
                             <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
 
-                                <lajjel></lajjel>
+                              
                                 <input name="buyerName" type="text" defaultValue={user?.displayName} disabled className="input w-full input-bordered" />
                                 <input name="email" type="email" defaultValue={user?.email} disabled className="input w-full input-bordered" />
                                 <input name="productName" type="text" defaultValue={productName} disabled className="input w-full input-bordered" />

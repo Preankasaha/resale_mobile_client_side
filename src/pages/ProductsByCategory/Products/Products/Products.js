@@ -9,7 +9,7 @@ const Products = () => {
     const [productBooking, setProductBooking] = useState(null);
 
     return (
-        <div>
+        <div className='grid grid-cols-1 lg:grid-cols-2 justify-center md:mx-64 my-14'>
             {products.length &&
                 products?.map(product => <ProductsCard
                     key={product._id}

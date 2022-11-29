@@ -6,9 +6,9 @@ const Banner = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-white">
                 <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">SELL YOUR SMARTPHONE HERE</h1>
-                    <p className="text-2xl text-white font-bold  text-center my-4">Make quick cash at your door step</p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <h1 className="mb-5 text-5xl uppercase font-bold">SELL YOUR SMARTPHONE HERE</h1>
+                    <p className="text-3xl text-white font-bold  text-center uppercase my-4">Make quick cash at your door step</p>
+
                 </div>
             </div>
         </div>

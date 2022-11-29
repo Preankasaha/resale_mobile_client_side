@@ -10,6 +10,12 @@ const AddProduct = () => {
     const { user, loading } = useContext(AuthContext);
     console.log(user);
     const navigate = useNavigate();
+
+
+    let time = new Date();
+    let date = time.toDateString();
+    console.log(date);
+    console.log(time.toTimeString());
     const handleAddProduct = (data) => {
         console.log(data);
         const productInfo = {
@@ -24,13 +30,15 @@ const AddProduct = () => {
             originalPrice: data.originalPrice,
             productName: data.productName,
             resalePrice: data.resalePrice,
-            yearsOfUse: data.yearsOfUse
-
+            yearsOfUse: data.yearsOfUse,
+            date: date,
+            time: time
         }
         fetch('http://localhost:5000/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('resaleMobileToken')}`
             },
             body: JSON.stringify(productInfo)
         })

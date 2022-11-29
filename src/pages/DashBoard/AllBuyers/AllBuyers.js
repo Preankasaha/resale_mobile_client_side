@@ -2,10 +2,15 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const AllBuyers = () => {
-    const { data: allbuyers = [], refetch } = useQuery({
+    const { data: allbuyers = [] } = useQuery({
         queryKey: ['allbuyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allbuyers');
+            const res = await fetch('http://localhost:5000/allbuyers', {
+
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('resaleMobileToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -13,7 +18,7 @@ const AllBuyers = () => {
     return (
 
         <div>
-            <h2 className="text-3xl uppercase">All Buyers</h2>
+            <h2 className="text-3xl uppercase py-8 text-center">All Buyers</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

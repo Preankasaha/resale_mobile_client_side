@@ -27,7 +27,7 @@ const Header = () => {
 
     </React.Fragment>
     return (
-        <div className="navbar bg-gradient-to-r from-sky-900 to-cyan-500 text-white">
+        <div className="navbar bg-gradient-to-r from from-emerald-500 to-sky-500 text-black">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -37,10 +37,10 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl">Resale Mobile</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Resale Mobile</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0">
+                <ul className="menu menu-horizontal p-0 text-xl">
                     {menuItems}
                 </ul>
             </div>

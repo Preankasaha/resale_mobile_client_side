@@ -7,7 +7,7 @@ const AllSellers = () => {
     const { data: allsellers = [] } = useQuery({
         queryKey: ['allsellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allsellers');
+            const res = await fetch('http://localhost:5000/allsellers',);
             const data = await res.json();
             return data;
         }
@@ -17,16 +17,18 @@ const AllSellers = () => {
     return (
         <div>
             <div>
-                <h2 className="text-3xl uppercase my-8">All Sellers</h2>
+                <h2 className="text-3xl uppercase text-center my-8">All Sellers</h2>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Addvertise</th>
-                                <th>Delete</th>
+                                <th className=' text-xl'>Name</th>
+                                <th className=' text-xl'>Email</th>
+                                <th className=' text-xl'>Verify Seller</th>
+                                <th className=' text-xl'>Delete</th>
+
+
 
                             </tr>
                         </thead>
@@ -34,11 +36,11 @@ const AllSellers = () => {
                             {
                                 allsellers.map((seller, i) => <tr key={seller._id}>
                                     <th>{i + 1}</th>
-                                    <td>{seller.name}</td>
-                                    <td>{seller.email}</td>
-                                    
+                                    <td className='text-xl text-white'>{seller.name}</td>
+                                    <td className='text-xl text-white'>{seller.email}</td>
+                                    <td><button className='btn btn-xs btn-success'>Verify Seller</button></td>
                                     <td><button className='btn btn-xs btn-danger'>Delete</button></td>
-                                    <td><button className='btn btn-xs btn-success'>Addvertise</button></td>
+
                                 </tr>)
                             }
 
@@ -46,7 +48,7 @@ const AllSellers = () => {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

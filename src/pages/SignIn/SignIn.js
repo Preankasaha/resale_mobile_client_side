@@ -128,7 +128,8 @@ const SignIn = () => {
                         <SpinnerXs></SpinnerXs>
                     </PrimaryButton>
                         :
-                        <input className='btn btn-accent w-full' value="Sign In" type="submit" />
+                        <PrimaryButton>Sign In</PrimaryButton>
+                        // <input className='btn btn-accent w-full' value="Sign In" type="submit" />
                     }
                     <div> {logInError && <p>{logInError}</p>}</div>
                     <div>

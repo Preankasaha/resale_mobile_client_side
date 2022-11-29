@@ -1,3 +1,8 @@
+***** Admin of the app
+email: ssk@email.com
+password: SK@#99
+name: SHIVSHAKTIMOHAKALKALI
+role : Admin
 ##### Technologies:
 
 React

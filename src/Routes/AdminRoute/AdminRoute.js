@@ -5,7 +5,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useAdmin from '../../hook/useAdmin/useAdmin';
 
-
+//admin route
 
 
 
