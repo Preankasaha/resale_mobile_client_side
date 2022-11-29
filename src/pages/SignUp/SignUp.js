@@ -3,17 +3,30 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
+// import Spinner from '../../components/Spinner/Spinner';
+import SpinnerXs from '../../components/SpinnerXs/SpinnerXs';
 import { AuthContext } from '../../contexts/AuthProvider';
-// import Secondary from '../components/Secondary/Secondary';
+import useToken from '../../hook/useToken/useToken';
+
+
 
 const SignUp = () => {
     //useForm hook
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser, providerSignIn } = useContext(AuthContext);
+    const { createUser, updateUser, providerSignIn, loading } = useContext(AuthContext);
     //goggle provider
     const googleProvider = new GoogleAuthProvider();
     const [signUpError, setSignUpError] = useState('');
+    //to set email in token
+    const [email, setEmail] = useState('')
+    const [customToken] = useToken(email);
+    // const [token, setToken] = useState();
     const navigate = useNavigate();
+
+    if (customToken) {
+        navigate('/');
+    }
 
     //handle submit for sign up
     const handleSignUp = (data) => {
@@ -33,7 +46,7 @@ const SignUp = () => {
                 updateUser(userinfo)
                     .then(() => {
                         saveUser(data.name, data.email, data.role); //save user called in update user
-                        navigate('/')
+
                     })
 
                     .catch(error => console.log(error))
@@ -59,12 +72,22 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('saveuser:', data);
-                navigate('/');
+                // getUserToken(email);
+                setEmail(data.email);
             })
-
 
     }
 
+    // const getUserToken = email => {
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.accessToken) {
+    //                 localStorage.setItem('resaleMobileToken', data.accessToken);
+    //                 navigate('/');
+    //             }
+    //         });
+    // }
 
     // sign in with google
     const handleGoogleSignIn = () => {
@@ -87,7 +110,8 @@ const SignUp = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        navigate('/');
+                        setEmail(email)
+                        navigate('/')
                     })
             })
             .catch(error => {
@@ -95,7 +119,7 @@ const SignUp = () => {
             })
     }
     return (
-        <div className='h-[800px] flex justify-center items-center text-white'>
+        <div className='h-[800px] flex justify-center items-center text-white glass' style={{ backgroundImage: `url("")` }}>
             <div className='w-96 p-7'>
                 <h2 className='text-5xl text-center font-bold uppercase'>Sign Up</h2>
                 <p className='text-xl text-center my-4'>If You Are New To This Site, Please Register First</p>
@@ -138,8 +162,13 @@ const SignUp = () => {
                         </select>
                     </div>
                     {signUpError && <p className='text-red-500'>{signUpError}</p>}
-                    <input className='btn btn-accent w-full my-4' value="Sign Up" type="submit" />
 
+                    {loading ? <PrimaryButton>
+                        <SpinnerXs></SpinnerXs>
+                    </PrimaryButton>
+                        :
+                        <input className='btn btn-accent w-full my-4' value="Sign Up" type="submit" />
+                    }
                 </form>
 
                 <p>Already have an account? <Link className='text-secondary' to="/signin">Plz Sign In</Link></p>

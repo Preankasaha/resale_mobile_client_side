@@ -8,13 +8,14 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user, loading } = useContext(AuthContext);
+    console.log(user);
     const navigate = useNavigate();
     const handleAddProduct = (data) => {
         console.log(data);
         const productInfo = {
-            name: user?.name,
+            sellerName: user?.displayName,
             email: user?.email,
-            categoryName: data.categoryName,
+            categoryId: data.categoryId,
             condition: data.condition,
             description: data.description,
             img: data.img,
@@ -22,7 +23,9 @@ const AddProduct = () => {
             mobile: data.mobile,
             originalPrice: data.originalPrice,
             productName: data.productName,
-            resalePrice: data.resalePrice
+            resalePrice: data.resalePrice,
+            yearsOfUse: data.yearsOfUse
+
         }
         fetch('http://localhost:5000/product', {
             method: 'POST',
@@ -52,7 +55,7 @@ const AddProduct = () => {
                         <input type="text" {...register("productName", {
                             required: "Product Name is Required"
                         })} className="input input-bordered w-full max-w-xs" />
-                        {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+                        {errors.productName && <p className='text-red-500'>{errors.productName.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text text-white text-xl">Product Image</span></label>
@@ -78,11 +81,11 @@ const AddProduct = () => {
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text text-white text-xl">Product Category</span></label>
                         <select
-                            {...register('categoryName')}
+                            {...register('categoryId')}
                             className="select input-bordered w-full max-w-xs">
                             <option>Samsung
                             </option>
-                            <option>OPPO
+                            <option>Oppo
                             </option>
                             <option>iPhone
                             </option>
@@ -93,14 +96,14 @@ const AddProduct = () => {
                         <input type="text" {...register("originalPrice", {
                             required: 'Original Price is required'
                         })} className="input input-bordered w-full max-w-xs" />
-                        {errors.price && <p className='text-red-500'>{errors.price.message}</p>}
+                        {errors.originalPrice && <p className='text-red-500'>{errors.originalPrice.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text text-white text-xl">Resale Price</span></label>
                         <input type="text" {...register("resalePrice", {
                             required: 'Resale price is required'
                         })} className="input input-bordered w-full max-w-xs" />
-                        {errors.price && <p className='text-red-500'>{errors.price.message}</p>}
+                        {errors.resalePrice && <p className='text-red-500'>{errors.resalePrice.message}</p>}
                     </div>
 
 
@@ -111,6 +114,13 @@ const AddProduct = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.yearsOfUse && <p className='text-red-500'>{errors.yearsOfUse.message}</p>}
                     </div>
+                    {/* <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text text-white text-xl">Name</span></label>
+                        <input type="text"  {...register("sellerName", {
+                            required: true 
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.sellerName && <p className='text-red-500'>{errors.sellerName.message}</p>}
+                    </div> */}
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text text-white text-xl">Mobile</span></label>
                         <input type="text" {...register("mobile", {

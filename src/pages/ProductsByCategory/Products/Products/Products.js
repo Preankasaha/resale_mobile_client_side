@@ -19,7 +19,7 @@ const Products = () => {
             }
 
             {
-
+                productBooking &&
                 <BookNowModal
                     productBooking={productBooking}
                     setProductBooking={setProductBooking}

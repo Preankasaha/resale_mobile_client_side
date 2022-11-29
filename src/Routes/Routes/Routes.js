@@ -14,6 +14,7 @@ import DashBoard from '../../pages/DashBoard/DashBoard/DashBoard';
 import MyOrders from '../../pages/DashBoard/MyOrders/MyOrders';
 import MyProducts from '../../pages/DashBoard/MyProducts/MyProducts';
 import Categories from '../../pages/Home/Categories/Categories/Categories';
+import Advertisement from '../../pages/Home/Home/Advertisement/Advertisement';
 
 
 import Home from '../../pages/Home/Home/Home';
@@ -21,6 +22,7 @@ import Products from '../../pages/ProductsByCategory/Products/Products/Products'
 import DisplayError from '../../pages/Shared/DisplayError/DisplayError';
 import SignIn from '../../pages/SignIn/SignIn';
 import SignUp from '../../pages/SignUp/SignUp';
+import AdminRoute from '../AdminRoute/AdminRoute';
 import PrivateRouter from '../PrivateRoute/PrivateRoute';
 
 
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
                 element: <PrivateRouter><Products></Products></PrivateRouter>
             },
             {
+                path: '/advertises',
+                element: <Advertisement></Advertisement>
+            },
+            {
                 path: '/blog',
                 element: <Blog></Blog>
             },
@@ -67,7 +73,9 @@ const router = createBrowserRouter([
                     },
                     {
                         path: '/dashboard/allsellers',
-                        element: <AllSellers></AllSellers>
+                        element: <AdminRoute>
+                            <AllSellers></AllSellers>
+                        </AdminRoute>
 
                     },
                     {

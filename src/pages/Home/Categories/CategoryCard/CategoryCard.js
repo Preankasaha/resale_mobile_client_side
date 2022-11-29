@@ -2,14 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CategoryCard = ({ category }) => {
-    const { _id, id, categoryName } = category;
+    const { _id, catImg, categoryId, categoryName } = category;
 
     return (
-        <Link to={`/category/${_id}`}>
-            <div className={'card text-white p-6 md:card-side shadow-xl glass'}>
+        <Link to={`/category/${categoryId}`}>
+            <div className={'card text-white md:card-side shadow-xl glass'}>
 
                 <div>
-                    <div className="card-body">
+
+                    <div className="card-body flex justify-center">
+                        <img className='rounded-xl' src={catImg} alt="" />
                         <h2 className="card-title text-5xl text-white uppercase px-14">{categoryName}</h2>
 
                     </div>
