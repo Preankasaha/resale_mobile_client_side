@@ -5,8 +5,8 @@ const AdvertiseItemCard = (advertise) => {
     console.log(advertise.advertise);
     const { img, productName, description, resalePrice } = advertise.advertise;
     return (
-        <div className='p-8'>
-            <div className="card card-compact w-96 text-black shadow-xl  glass">
+        <div className=''>
+            <div className="card card-compact w-94 md:w-96 md:mx-32 lg:mx-0 my-4 text-black shadow-xl  glass">
                 <figure><img src={img} alt="" /></figure>
                 <div className="card-body font-bold">
                     <h2 className="card-title">{productName}</h2>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-gradient-to-r from from-emerald-500 to-sky-500 text-black font-bold">
+            <footer className="footer p-10 bg-gradient-to-r from-emerald-500 to-sky-500 text-black font-bold">
                 <div>
 
                     <p className='text-2xl font-bold'>Resale Mobile</p>

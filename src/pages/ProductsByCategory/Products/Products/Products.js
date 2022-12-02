@@ -5,11 +5,16 @@ import ProductsCard from '../ProductsCard/ProductsCard';
 
 const Products = () => {
     const products = useLoaderData();
-    // const [booking, setBooking] = useState(true);
+
     const [productBooking, setProductBooking] = useState(null);
 
+
+
+    // fetch(`http://localhost:5000/verifyseller/products/:id`)
+
+    //product card
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-2 justify-center md:mx-64 my-14'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 justify-center md: mx-0 md:mx-64 my-14 gap-8'>
             {products.length &&
                 products?.map(product => <ProductsCard
                     key={product._id}
@@ -26,34 +31,7 @@ const Products = () => {
                 ></BookNowModal>
 
             }
-            {/* {products.length &&
-                products?.map(product => <ProductsCard
-                    key={product._id}
-                    product={product}
-                    setProductBooking={product}
-                ></ProductsCard>)
-            } */}
-            {/* {
-                 booking !== null &&
-                <BookNowModal
-                    productBooking={productBooking}
-                    setProductBooking={setProductBooking}
-                ></BookNowModal>
-            } */}
 
-
-
-            {/* {
-
-
-                products.length &&
-                products?.map(product =>
-                    <BookNowModal
-                        product={product}
-                        setProductBooking={setP{roBooking}
-                    ></BookNowModal>
-                )
-            } */}
 
 
         </div>

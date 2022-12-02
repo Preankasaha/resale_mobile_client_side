@@ -16,8 +16,11 @@ const AddProduct = () => {
     let date = time.toDateString();
     console.log(date);
     console.log(time.toTimeString());
+
+    //add product handle submit
     const handleAddProduct = (data) => {
         console.log(data);
+        //product object
         const productInfo = {
             sellerName: user?.displayName,
             email: user?.email,
@@ -34,11 +37,13 @@ const AddProduct = () => {
             date: date,
             time: time
         }
-        fetch('http://localhost:5000/product', {
+
+        // addproduct post metod for client side
+        fetch(' https://resale-mobile-server.vercel.app/addproduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                authorization: `bearer ${localStorage.getItem('resaleMobileToken')}`
+
             },
             body: JSON.stringify(productInfo)
         })
@@ -54,10 +59,10 @@ const AddProduct = () => {
         return <Spinner></Spinner>
     }
     return (
-        <div className='w-full text-white bg-gradient-to-r from-sky-900 to-cyan-500 p-8 lg:px-32'>
+        <div className='w-full text-white bg-gradient-to-r from-emerald-500 to-sky-500  p-8 lg:px-32'>
             <h2 className="text-5xl text-center my-8 uppercase">Add Your Product</h2>
             <form onSubmit={handleSubmit(handleAddProduct)}>
-                <div className='grid grid-cols-1 lg:grid-cols-2 justfy-between'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justfy-between  md:gap-4'>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text text-white text-xl">Product Name</span></label>
                         <input type="text" {...register("productName", {

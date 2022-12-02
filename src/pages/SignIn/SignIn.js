@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 // import Spinner from '../../components/Spinner/Spinner';
 import SpinnerXs from '../../components/SpinnerXs/SpinnerXs';
 import { AuthContext } from '../../contexts/AuthProvider';
-// import useToken from '../../hook/useToken/useToken';
+import useToken from '../../hook/useToken/useToken';
 
 
 const SignIn = () => {
@@ -19,19 +19,21 @@ const SignIn = () => {
     const [logInError, setLogInError] = useState('');
     // const [data, setData] = useState('');
     // const [logInEmail, setLogInEmail] = useState('')
-    // const [userloginEmail, setUserLoginEmail] = useState('');
+    const [userloginEmail, setUserLoginEmail] = useState('');
 
     //uselocation and usenavigate to redirect page to desired destination
     const location = useLocation();
     const navigate = useNavigate();
 
-    // const [customToken] = useToken(userloginEmail);
-    const from = location.state?.from?.pathname || '/';
+    const [customToken] = useToken(userloginEmail);
+    const from = '/';
 
 
-    // if (customToken) {
-    //     navigate(from, { replace: true });
-    // }
+    useEffect(() => {
+        if (customToken) {
+            navigate(from, { replace: true });
+        }
+    }, [customToken, from, navigate])
 
 
     //handlesubmit for login
@@ -42,8 +44,8 @@ const SignIn = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
-                // setUserLoginEmail(data.email);
-                getUserToken(data.email);
+                setUserLoginEmail(data.email);
+                // getUserToken(data.email);
             })
             .catch(error => {
                 console.log(error.message)
@@ -51,17 +53,17 @@ const SignIn = () => {
             })
     }
 
-    const getUserToken = email => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.accessToken) {
-                    localStorage.setItem('resaleMobileToken', data.accessToken);
-                    // navigate('/');
-                    navigate(from, { replace: true });
-                }
-            });
-    }
+    // const getUserToken = email => {
+    //     fetch(` https://resale-mobile-server.vercel.app/jwt?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.accessToken) {
+    //                 localStorage.setItem('resaleMobileToken', data.accessToken);
+    //                 // navigate('/');
+    //                 navigate(from, { replace: true });
+    //             }
+    //         });
+    // }
     // sign in with google
     const handleGoogleSignIn = () => {
         providerSignIn(googleProvider)
@@ -74,7 +76,7 @@ const SignIn = () => {
                     role: 'Buyer'
                 }
                 toast.success('You sign in successfully')
-                fetch('http://localhost:5000/users', {
+                fetch(' https://resale-mobile-server.vercel.app/users', {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -83,8 +85,8 @@ const SignIn = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        getUserToken(user.email)
-                        navigate(from, { replace: true });
+                        // getUserToken(user.email)
+                        setUserLoginEmail(user.email);
                     })
 
             })

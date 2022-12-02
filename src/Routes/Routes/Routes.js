@@ -13,6 +13,8 @@ import DashBoard from '../../pages/DashBoard/DashBoard/DashBoard';
 
 import MyOrders from '../../pages/DashBoard/MyOrders/MyOrders';
 import MyProducts from '../../pages/DashBoard/MyProducts/MyProducts';
+import Payment from '../../pages/DashBoard/Payment/Payment';
+import Reported from '../../pages/DashBoard/Reported/Reported';
 import Categories from '../../pages/Home/Categories/Categories/Categories';
 import Advertisement from '../../pages/Home/Home/Advertisement/Advertisement';
 
@@ -24,6 +26,7 @@ import SignIn from '../../pages/SignIn/SignIn';
 import SignUp from '../../pages/SignUp/SignUp';
 import AdminRoute from '../AdminRoute/AdminRoute';
 import PrivateRouter from '../PrivateRoute/PrivateRoute';
+import SellerRoute from '../SellerRoute/SellerRoute';
 
 
 const router = createBrowserRouter([
@@ -44,7 +47,7 @@ const router = createBrowserRouter([
 
             {
                 path: '/category/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+                loader: ({ params }) => fetch(` https://resale-mobile-server.vercel.app/category/${params.id}`),
                 element: <PrivateRouter><Products></Products></PrivateRouter>
             },
             {
@@ -66,6 +69,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <PrivateRouter> <DashboardLayout></DashboardLayout></PrivateRouter>,
+                errorElement: <DisplayError></DisplayError>,
                 children: [
                     {
                         path: '/dashboard',
@@ -80,13 +84,15 @@ const router = createBrowserRouter([
                     },
                     {
                         path: '/dashboard/allbuyers',
-                        element: <AllBuyers></AllBuyers>
+                        element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
 
                     },
                     {
 
                         path: '/dashboard/addproduct',
-                        element: <AddProduct></AddProduct>
+                        element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+                        // element: <AddProduct></AddProduct>
+
                     },
                     {
                         path: '/dashboard/myorders',
@@ -95,10 +101,21 @@ const router = createBrowserRouter([
                     },
                     {
                         path: '/dashboard/myproduct',
-                        element: <MyProducts></MyProducts>
+                        element: <SellerRoute>
+                            <MyProducts></MyProducts>
+                        </SellerRoute>
+                        // element: <MyProducts></MyProducts>
 
+                    },
+                    {
+                        path: '/dashboard/reporteds',
+                        element: <Reported></Reported>
+                    },
+                    {
+                        path: '/dashboard/payment/:id',
+                        element: <Payment></Payment>,
+                        loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
                     }
-
                 ]
             }
 

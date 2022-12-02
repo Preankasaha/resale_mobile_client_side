@@ -1,9 +1,24 @@
 ***** Admin of the app
+
 email: ssk@email.com
 password: SK@#99
 name: SHIVSHAKTIMOHAKALKALI
 role : Admin
-##### Technologies:
+
+# Project Title
+
+Resale Mobile
+
+
+## Project Description
+
+This project will serve as an onlinemarket application resaling secondhand mobile . React app is used for this project. React router dom is used for availing dynamic routing facilities bestowed by the react library.Basically, React, react router dom, tailwindcss and daisyUI, firebase are used for the project. Along with these, packages like   react icon are used to facilate the users' interaction.
+
+The site has a navbar with home, blog, login, logout, category, add router. There are 3 categories primarily included to this site. But, more categories are addable. clicking the category/:id router will take you to the options with product card. clicking the book now button on product card will lead to booking modal area. User will get be able to book product from here. There are one more option on product card name as report which can be clicked to report the card. To  go to watch and select products, user will need to log in first. Moreover, Note that, private routes' access is restrcited to any unauthorized user. 
+
+After sign in, user wil be able to see dashboard. on the dashBoard layout, there are all sellers, all buyers, add product, my products, my orders, reported items routes. The seller can see add products and my products routes, the buyers can see my orders route, and the admin can see all sellers, all buyers, reported items routes. seller can delete their products if wants to and advertise items to dispaly in the advertisement section on home page. admin can delete buyer, seller and reported items.
+
+### Technologies:
 
 React
 React Router Dom
@@ -14,6 +29,33 @@ React Form Hook
 React Hot Toast
 react-loader-spinner
 jesonwebtoken
+axios
+express
+mode.js
+react icon
+
+#### Livesite Link
+
+https://resale-mobile.web.app
+
+#####  API References
+https://resale-mobile-server.vercel.app/category
+https://resale-mobile-server.vercel.app/addproduct
+https://resale-mobile-server.vercel.app/sellers/${seller._id}
+
+###### Deployment
+
+The livesite project is deployed at firebase. The project code file is kept stored at github.
+github link:
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

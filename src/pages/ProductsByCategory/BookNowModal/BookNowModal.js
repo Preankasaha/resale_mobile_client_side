@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 
@@ -7,15 +8,16 @@ const BookNowModal = ({ productBooking, setProductBooking }) => {
 
     console.log(productBooking);
 
-    const { productName, categoryName, originalPrice, resalePrice, yearsOfUse, sellerName, location } = productBooking;
+    const { productName, img, categoryName, originalPrice, resalePrice, yearsOfUse, sellerName, location } = productBooking;
     const { user } = useContext(AuthContext);
-
+    const navigate = useNavigate();
 
     const handleBooking = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const productName = form.productName.value;
+        // const img = form.img.value;
         const resalePrice = form.resalePrice.value;
         const phone = form.phone.value;
         const buyerName = user?.displayName;
@@ -25,12 +27,13 @@ const BookNowModal = ({ productBooking, setProductBooking }) => {
             buyerName,
             email,
             productName,
+            // img,
             resalePrice,
             phone,
             location
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch(' https://resale-mobile-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -44,6 +47,7 @@ const BookNowModal = ({ productBooking, setProductBooking }) => {
                 if (data.acknowledged) {
                     setProductBooking(null);
                     toast.success('Your Booking is confirmed');
+                    navigate('/dashboard/myorders')
                 }
             })
     }
@@ -61,10 +65,11 @@ const BookNowModal = ({ productBooking, setProductBooking }) => {
 
                             <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
 
-                              
+
                                 <input name="buyerName" type="text" defaultValue={user?.displayName} disabled className="input w-full input-bordered" />
                                 <input name="email" type="email" defaultValue={user?.email} disabled className="input w-full input-bordered" />
                                 <input name="productName" type="text" defaultValue={productName} disabled className="input w-full input-bordered" />
+                                {/* <input name="img" type="text" defaultValue={img} disabled className="input w-full input-bordered" /> */}
                                 <input name="resalePrice" type="text" defaultValue={resalePrice} disabled className="input w-full input-bordered" />
                                 <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
                                 <input name="location" type="text" placeholder="meeting location" className="input w-full input-bordered" />

@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
@@ -24,6 +24,7 @@ const SignUp = () => {
     // const [token, setToken] = useState();
     const navigate = useNavigate();
 
+    //token for useToken
     if (customToken) {
         navigate('/');
     }
@@ -33,6 +34,7 @@ const SignUp = () => {
         console.log(data);
         setSignUpError('')
 
+        //create user with email and password
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -57,12 +59,12 @@ const SignUp = () => {
             })
 
     }
-
+    //for saving user
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
         console.log(user);
 
-        fetch('http://localhost:5000/users', {
+        fetch(' https://resale-mobile-server.vercel.app/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -79,7 +81,7 @@ const SignUp = () => {
     }
 
     // const getUserToken = email => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     fetch(` https://resale-mobile-server.vercel.app/jwt?email=${email}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             if (data.accessToken) {
@@ -101,7 +103,7 @@ const SignUp = () => {
                 }
                 //jwt user
                 toast.success('You sign in successfully')
-                fetch('http://localhost:5000/users', {
+                fetch(' https://resale-mobile-server.vercel.app/users', {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -118,9 +120,10 @@ const SignUp = () => {
                 setSignUpError(error.message);
             })
     }
+
     return (
-        <div className='h-[800px] flex justify-center items-center text-white glass' style={{ backgroundImage: `url("")` }}>
-            <div className='w-96 p-7'>
+        <div className='h-[800px] flex justify-center items-center text-white' style={{ backgroundImage: `url("")` }}>
+            <div className='w-96 p-7 glass'>
                 <h2 className='text-5xl text-center font-bold uppercase'>Sign Up</h2>
                 <p className='text-xl text-center my-4'>If You Are New To This Site, Please Register First</p>
 
