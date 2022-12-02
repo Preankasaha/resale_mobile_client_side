@@ -11,7 +11,7 @@ const Advertisement = () => {
     const { data: advertises = [] } = useQuery({
         queryKey: ['advertises'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/advertises',
+            const res = await fetch('https://resale-mobile.web.app/advertises',
                 {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('resaleMobileToken')}`

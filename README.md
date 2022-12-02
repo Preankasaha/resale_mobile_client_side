@@ -33,6 +33,7 @@ axios
 express
 mode.js
 react icon
+react query
 
 #### Livesite Link
 

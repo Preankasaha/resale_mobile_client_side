@@ -24,7 +24,7 @@ const MyProducts = () => {
     //advertise button
     const handleAdvertise = id => {
         console.log(id);
-        fetch(`http://localhost:5000/myproduct/advertise/${id}`, {
+        fetch(`https://resale-mobile.web.app/myproduct/advertise/${id}`, {
             method: 'PUT',
             // headers: {
             //     "content-type": "application/json",

@@ -17,7 +17,7 @@ const Check = ({ booking }) => {
         console.log(resalePrice);
         // Create PaymentIntent as soon as the page loads
         if (resalePrice) {
-            fetch("http://localhost:5000/create-payment-intent", {
+            fetch("https://resale-mobile.web.app/create-payment-intent", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const Check = ({ booking }) => {
                 bookingId: _id
             }
             console.log('paymentIntent', paymentIntent);
-            fetch('http://localhost:5000/payments', {
+            fetch('https://resale-mobile.web.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
